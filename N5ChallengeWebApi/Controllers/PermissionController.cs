@@ -28,7 +28,7 @@ namespace N5ChallengeWebApi.Controllers
         {
             try
             {
-                Log.Logger = new LoggerConfiguration().WriteTo.File("@.\\Logs\\LogGetPermission.txt").MinimumLevel.Verbose().CreateLogger();
+                Log.Logger = new LoggerConfiguration().WriteTo.File(".\\Logs\\LogGetPermission.txt").MinimumLevel.Verbose().CreateLogger();
 
                 Log.Debug("List of requested permissions");
                 Log.CloseAndFlush();
@@ -60,7 +60,7 @@ namespace N5ChallengeWebApi.Controllers
                     return BadRequest();
                 }
 
-                Log.Logger = new LoggerConfiguration().WriteTo.File("@.\\Logs\\LogRequestPermission.txt").MinimumLevel.Verbose().CreateLogger();
+                Log.Logger = new LoggerConfiguration().WriteTo.File(".\\Logs\\LogRequestPermission.txt").MinimumLevel.Verbose().CreateLogger();
 
                 Log.Debug("Requested permission with id {id}", id.ToString());
 
@@ -94,7 +94,7 @@ namespace N5ChallengeWebApi.Controllers
             {
                 try
                 {
-                    Log.Logger = new LoggerConfiguration().WriteTo.File("@.\\Logs\\LogRequestPermission.txt").MinimumLevel.Verbose().CreateLogger();
+                    Log.Logger = new LoggerConfiguration().WriteTo.File(".\\Logs\\LogRequestPermission.txt").MinimumLevel.Verbose().CreateLogger();
                     Log.Debug("Add new permission for {fomename} {surename}", permission.EmployeeForename, permission.EmployeeSurname);
 
                     var permissionId = await _permissionService.RequestPermission(permission);
@@ -131,7 +131,7 @@ namespace N5ChallengeWebApi.Controllers
         {
             try
             {
-                Log.Logger = new LoggerConfiguration().WriteTo.File("@.\\Logs\\LogModifyPermission.txt").MinimumLevel.Verbose().CreateLogger();
+                Log.Logger = new LoggerConfiguration().WriteTo.File(".\\Logs\\LogModifyPermission.txt").MinimumLevel.Verbose().CreateLogger();
                 Log.Debug("Modify permission");
 
                 await _permissionService.ModifyPermission(permissionToUpdate);
